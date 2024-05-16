@@ -1,0 +1,48 @@
+{
+  "name": "dc-rice_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "engines": {
+    "node": ">=18.18.0"
+  },
+  "scripts": {
+    "lint": "eslint src --ext .js --report-unused-disable-directives --max-warnings 0",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel ./src -d ./build/src",
+    "build": "npm run clean && npm run build-babel",
+    "production": "npm run build && cross-env MODE=production node ./build/src/server.js",
+    "start": "cross-env MODE=dev nodemon --exec babel-node src/server.js"
+  },
+  "author": "truongdev",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/runtime": "^7.24.5",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "http-status-codes": "^2.3.0",
+    "joi": "^17.13.1",
+    "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.21",
+    "mysql2": "^3.9.7",
+    "nanoid": "^3.3.6",
+    "sequelize": "^6.37.3",
+    "socket.io": "^4.7.5"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.5",
+    "@babel/core": "^7.24.5",
+    "@babel/eslint-parser": "^7.24.5",
+    "@babel/node": "^7.23.9",
+    "@babel/plugin-transform-runtime": "^7.24.3",
+    "@babel/preset-env": "^7.24.5",
+    "babel-plugin-module-resolver": "^5.0.2",
+    "eslint": "^8.47.0",
+    "nodemon": "^3.1.0",
+    "sequelize-cli": "^6.6.2"
+  }
+}
