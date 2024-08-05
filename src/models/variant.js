@@ -1,13 +1,9 @@
 'use strict'
 const { Model } = require('sequelize')
-const ApiError = require('@/utils/ApiError')
-const { StatusCodes } = require('http-status-codes')
-const _ = require('lodash')
-const Joi = require('joi')
 module.exports = (sequelize, DataTypes) => {
   class Variant extends Model {
     static associate(models) {
-      Variant.belongsTo(models.Product, { foreignKey: 'productId', as: 'variants' })
+      Variant.belongsTo(models.Product, { foreignKey: 'product_id', as: 'variants' })
     }
   }
   // const productSchema = Joi.object({
@@ -48,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Variant.init(
     {
-      productId: DataTypes.INTEGER,
+      product_id: DataTypes.INTEGER,
       title: DataTypes.STRING,
       sku: DataTypes.STRING,
       position: DataTypes.INTEGER,
@@ -56,7 +52,7 @@ module.exports = (sequelize, DataTypes) => {
       price: DataTypes.DECIMAL(10, 2),
       weight: DataTypes.INTEGER,
       weight_unit: DataTypes.STRING,
-      inventory_quantity: DataTypes.INTEGER,
+      quantity: DataTypes.INTEGER,
       presentment_prices: DataTypes.JSON
     },
     {

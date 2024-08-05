@@ -12,7 +12,9 @@ export const corsOptions = {
     return callback('', false)
   },
   methods: LIST_METHODS,
-  exposedHeaders: 'Authorization',
+  // exposedHeaders: 'Authorization',
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Refresh-Token'],
+  exposedHeaders: ['Authorization', 'X-Refresh-Token'],
   optionsSuccessStatus: 200,
   credentials: true
 }

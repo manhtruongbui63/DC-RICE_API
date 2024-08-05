@@ -1,7 +1,7 @@
 import { StatusCodes } from 'http-status-codes'
 import { env } from '@/configs/evironment'
 
-export const errorHandling = (err, req, res) => {
+export const errorHandling = (err, req, res, next) => {
   if (!err.statusCode) err.statusCode = StatusCodes.INTERNAL_SERVER_ERROR
   const responseError = {
     statusCode: err.statusCode,

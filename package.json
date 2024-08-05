@@ -11,6 +11,7 @@
     "clean": "rm -rf build && mkdir build",
     "build-babel": "babel ./src -d ./build/src",
     "build": "npm run clean && npm run build-babel",
+    "dev": "npm run build && cross-env MODE=dev node ./build/src/server.js",
     "production": "npm run build && cross-env MODE=production node ./build/src/server.js",
     "start": "cross-env MODE=dev nodemon --exec babel-node src/server.js"
   },
@@ -30,6 +31,7 @@
     "lodash": "^4.17.21",
     "mysql2": "^3.9.7",
     "nanoid": "^3.3.6",
+    "nodemailer": "^6.9.14",
     "sequelize": "^6.37.3",
     "socket.io": "^4.7.5"
   },
