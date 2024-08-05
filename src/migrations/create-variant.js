@@ -2,14 +2,15 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Variants', {
+    await queryInterface.createTable('variants', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      productId: {
+      product_id: {
+        unique: true,
         allowNull: false,
         type: Sequelize.INTEGER
       },
@@ -18,7 +19,6 @@ module.exports = {
         type: Sequelize.STRING
       },
       sku: {
-        unique: true,
         allowNull: false,
         type: Sequelize.STRING
       },
@@ -41,7 +41,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      inventory_quantity: {
+      quantity: {
         allowNull: false,
         defaultValue: 99,
         type: Sequelize.INTEGER
@@ -65,8 +65,7 @@ module.exports = {
       }
     })
   },
-  // eslint-disable-next-line no-unused-vars
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Variants')
+    await queryInterface.dropTable('variants')
   }
 }

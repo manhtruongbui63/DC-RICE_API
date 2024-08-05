@@ -2,35 +2,40 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('products', {
+    await queryInterface.createTable('addresses', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      user_id: {
+        unique: true,
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
+      full_name: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      slug: {
+      phone: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      description: {
-        type: Sequelize.STRING
-      },
-      thumb_src: {
+      city: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      thumb_alt: {
+      district: {
+        allowNull: false,
         type: Sequelize.STRING
       },
-      status: {
+      ward: {
         allowNull: false,
-        defaultValue: 'pending',
-        type: Sequelize.ENUM('active', 'pending', 'inactive')
+        type: Sequelize.STRING
+      },
+      line: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -47,6 +52,6 @@ module.exports = {
     })
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('products')
+    await queryInterface.dropTable('addresses')
   }
 }

@@ -9,8 +9,10 @@ export const env = {
   ACCESS_TOKEN_SECRET: process.env.ACCESS_TOKEN_SECRET,
   REFRESH_TOKEN_SECRET: process.env.REFRESH_TOKEN_SECRET,
   JWT_SECRET: process.env.JWT_SECRET,
-  EXPIRES_IN: process.env.EXPIRES_IN,
   ISS: process.env.ISS,
+  EXPIRES_IN: process.env.EXPIRES_IN,
+  ACCESS_EXPIRES_IN: process.env.ACCESS_EXPIRES_IN,
+  REFRESH_EXPIRES_IN: process.env.REFRESH_EXPIRES_IN,
 
   EMAIL_HOST: process.env.EMAIL_HOST,
   EMAIL_PORT: process.env.EMAIL_PORT,

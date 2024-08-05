@@ -3,47 +3,56 @@ import productService from '@/services/product.service'
 
 const createNew = async (req, res, next) => {
   try {
-    let fakeVariants = [
-      {
-        title: 'Variant_1',
-        compare_at_price: 300,
-        price: 199,
-        weight: 3,
-        weight_unit: 'kg',
-        inventory_quantity: 99
-      },
-      {
-        title: 'Variant_2',
-        compare_at_price: 400,
-        price: 399,
-        weight: 5,
-        weight_unit: 'kg',
-        inventory_quantity: 99
-      },
-      {
-        title: 'Variant_3',
-        compare_at_price: 800,
-        price: 699,
-        weight: 10,
-        weight_unit: 'kg',
-        inventory_quantity: 50
-      },
-      {
-        title: 'Variant_4',
-        compare_at_price: null,
-        price: 1200,
-        weight: 25,
-        weight_unit: 'kg',
-        inventory_quantity: 1
-      }
-    ]
-    let payload = {
-      pData: req.body,
-      vData: fakeVariants
-    }
-    let data = await productService.createNew(payload)
+    // let formData = {
+    //   categories: [],
+    //   images: [],
+    //   attributes: [],
+    //   variants: [],
+    //   markdown: ''
+    // }
+    // let fakeVariants = [
+    //   {
+    //     title: 'Variant_1',
+    //     compareAtPrice: 300,
+    //     price: 199,
+    //     weight: 3,
+    //     weightUnit: 'kg',
+    //     quantity: 99
+    //   },
+    //   {
+    //     title: 'Variant_2',
+    //     compareAtPrice: 400,
+    //     price: 399,
+    //     weight: 5,
+    //     weightUnit: 'kg',
+    //     quantity: 99
+    //   },
+    //   {
+    //     title: 'Variant_3',
+    //     compareAtPrice: 800,
+    //     price: 699,
+    //     weight: 10,
+    //     weightUnit: 'kg',
+    //     quantity: 50
+    //   },
+    //   {
+    //     title: 'Variant_4',
+    //     compareAtPrice: null,
+    //     price: 1200,
+    //     weight: 25,
+    //     weightUnit: 'kg',
+    //     quantity: 1
+    //   }
+    // ]
+    // let payload = {
+    //   pData: req.body,
+    //   vData: fakeVariants
+    // }
+    // let data = await productService.createNew(payload)
     res.status(StatusCodes.CREATED).json({
-      data: data ?? {}
+      message: 'Successfull',
+      success: true
+      // data: data ?? {}
     })
   } catch (error) {
     next(error)

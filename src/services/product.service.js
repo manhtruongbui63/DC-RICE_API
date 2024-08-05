@@ -1,6 +1,6 @@
 /* eslint-disable no-useless-catch */
 import db from '../models/index'
-import { ApiError } from '@/utils/ApiError'
+import ApiError from '@/utils/ApiError'
 import { slugify, generateSKU } from '@/utils/formaters'
 import { StatusCodes } from 'http-status-codes'
 
@@ -14,29 +14,30 @@ const createNew = async (data) => {
     if (!created) {
       throw new ApiError(StatusCodes.CONFLICT, 'The product already exists')
     }
+
     const variants = await Promise.all(
       data?.vData?.map(async (item, index) => {
         const sku = await signSKU()
         return {
-          productId: product.id,
+          productId: +product.id,
           sku: sku,
           position: index + 1,
           ...item,
-          presentment_prices: [
+          presentmentPrices: [
             {
               price: {
                 amount: item.price,
                 currency_code: 'USD'
               },
-              compare_at_price: item.compare_at_price
-                ? { amount: item.compare_at_price, currency_code: 'USD' }
+              compareAtPrice: item.compareAtPrice
+                ? { amount: item.compareAtPrice, currency_code: 'USD' }
                 : null
             }
           ]
         }
       })
     )
-    const result = await db.Variant.bulkCreate(variants)
+    await db.Variant.bulkCreate(variants)
     return product
   } catch (error) {
     throw error

@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable(
-      'users',
+      'posts',
       {
         id: {
           allowNull: false,
@@ -11,25 +11,28 @@ module.exports = {
           primaryKey: true,
           type: Sequelize.INTEGER
         },
-        first_name: {
-          type: Sequelize.STRING
-        },
-        last_name: {
-          type: Sequelize.STRING
-        },
-        phone: {
-          type: Sequelize.STRING
-        },
-        avatar: {
-          type: Sequelize.STRING
-        },
-        email: {
+        title: {
           allowNull: false,
           type: Sequelize.STRING
         },
-        password: {
+        slug: {
           allowNull: false,
           type: Sequelize.STRING
+        },
+        description: {
+          type: Sequelize.STRING
+        },
+        user_id: {
+          allowNull: false,
+          type: Sequelize.INTEGER
+        },
+        author: {
+          allowNull: false,
+          type: Sequelize.STRING
+        },
+        content: {
+          allowNull: false,
+          type: Sequelize.TEXT('long')
         },
         status: {
           allowNull: false,
@@ -56,6 +59,6 @@ module.exports = {
     )
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('users')
+    await queryInterface.dropTable('posts')
   }
 }

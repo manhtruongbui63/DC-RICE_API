@@ -1,6 +1,7 @@
 import express from 'express'
 import { productValidation } from '@/validations/product.validation'
 import { createNew, getDetials } from '@/controllers/product.controller'
+import { isAuthorized } from '@/middlewares/actionJWT'
 
 const Router = express.Router()
 Router.route('/').get().post(productValidation.createNew, createNew)
