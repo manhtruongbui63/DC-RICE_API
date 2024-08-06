@@ -4,16 +4,15 @@
   "description": "",
   "main": "server.js",
   "engines": {
-    "node": ">=18.18.0"
+    "node": ">=18.x"
   },
   "scripts": {
     "lint": "eslint src --ext .js --report-unused-disable-directives --max-warnings 0",
     "clean": "rm -rf build && mkdir build",
+    "start": "cross-env MODE=dev nodemon --exec babel-node src/server.js",
     "build-babel": "babel ./src -d ./build/src",
     "build": "npm run clean && npm run build-babel",
-    "dev": "npm run build && cross-env MODE=dev node ./build/src/server.js",
-    "production": "npm run build && cross-env MODE=production node ./build/src/server.js",
-    "start": "cross-env MODE=dev nodemon --exec babel-node src/server.js"
+    "production": "npm run build && cross-env MODE=production node ./build/src/server.js"
   },
   "author": "truongdev",
   "license": "ISC",
