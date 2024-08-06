@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable(
-      'posts',
+      'Posts',
       {
         id: {
           allowNull: false,
@@ -59,6 +59,6 @@ module.exports = {
     )
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('posts')
+    await queryInterface.dropTable('Posts')
   }
 }
