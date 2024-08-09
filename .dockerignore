@@ -1,2 +1,12 @@
 node_modules
-build
+
+dist/
+build/
+
+.env
+.git
+.gitignore
+
+tests/
+
+docker-compose.yml
